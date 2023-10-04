@@ -5,9 +5,9 @@
 
 import React from "react";
 import classes from "./ExpenseItem.module.css";
-import { Expense } from "../models/expense.model";
+import { Expense } from "../../models/expense.model";
 import ExpenseDate from "./ExpenseDate";
-import Card from "./Card";
+import Card from "../UI/Card";
 
 const ExpenseItem: React.FC<Expense> = (props) => {
   return (

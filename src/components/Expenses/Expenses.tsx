@@ -4,10 +4,10 @@
  */
 
 import React from "react";
-import { Expense } from "../models/expense.model";
+import { Expense } from "../../models/expense.model";
 import ExpenseItem from "./ExpenseItem";
 import classes from './Expenses.module.css';
-import Card from "./Card";
+import Card from "../UI/Card";
 
 const Expenses: React.FC<{ items: Expense[] }> = (props) => {
   return (
