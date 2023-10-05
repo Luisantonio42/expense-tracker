@@ -1,14 +1,15 @@
 /**
  * Expenses Component
- * Renders an array of n elements of type Expense.
+ * Renders an array of n elements of type Expense. and charts for month expenses. 
  */
 
 import React, { useState } from "react";
 import { Expense } from "../../models/expense.model";
-import ExpenseItem from "./ExpenseItem";
 import classes from "./Expenses.module.css";
 import Card from "../UI/Card";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
+import ExpensesChart from "./ExpensesChart";
 
 const Expenses: React.FC<{ items: Expense[] }> = (props) => {
   const [filteredYear, setFilteredYear] = useState("2023");
@@ -17,6 +18,10 @@ const Expenses: React.FC<{ items: Expense[] }> = (props) => {
     setFilteredYear(selectedYear);
   };
 
+  const filteredExpenses = props.items.filter(
+    (expense) => expense.date.getFullYear().toString() === filteredYear
+  );
+
   return (
     <div>
       <Card className={classes.expenses}>
@@ -24,18 +29,8 @@ const Expenses: React.FC<{ items: Expense[] }> = (props) => {
           onSaveFilteredYear={filteredYearHandler}
           selected={filteredYear}
         />
-
-        {props.items.map((item) => {
-          return (
-            <ExpenseItem
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              date={item.date}
-              amount={item.amount}
-            />
-          );
-        })}
+        <ExpensesChart expenses={filteredExpenses}/>
+        <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
   );

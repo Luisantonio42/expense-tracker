@@ -2,12 +2,14 @@
  * ExpenseForm Component
  * Create Expense ojbect through a form.
  */
+
 import React, { useState } from "react";
 import classes from "./ExpenseForm.module.css";
 import { Expense } from "../../models/expense.model";
 
 type ExpenseFormProps = {
   onSaveExpenseData: (data: Expense) => void;
+  onCancelAddExpense: () => void;
 };
 
 const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
@@ -47,6 +49,9 @@ const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
     setEnteredDate("");
   };
 
+  const cancelSubmitHandler = () => {
+    props.onCancelAddExpense();
+  }
   // Two way binding by adding state value to the value attribute into the form elements.
   return (
     <form onSubmit={submitHandler}>
@@ -84,6 +89,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = (props) => {
       </div>
 
       <div className={classes["new-expense__actions"]}>
+        <button type="button" onClick={cancelSubmitHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>

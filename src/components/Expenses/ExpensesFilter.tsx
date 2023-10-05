@@ -1,3 +1,8 @@
+/**
+ * ExpensesFilter Component
+ * Display a filter for choosing a year to filter expenses.
+ */
+
 import React from "react";
 import classes from "./ExpensesFilter.module.css";
 
