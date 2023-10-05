@@ -9,7 +9,7 @@ import classes from "./Card.module.css";
 
 type Props = {
   children?: React.ReactNode;
-  className: string;
+  className?: string;
 };
 
 const Card: React.FC<Props> = (props) => {
